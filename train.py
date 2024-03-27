@@ -9,7 +9,7 @@ from models.tdnn import ECAPA_TDNN
 from loss import AAMSoftmax, evaluate_accuracy_gpu
 
 
-def init_logs(path=".\\logs"):
+def init_logs(path="./logs"):
     for root, dirs, files in os.walk(path, topdown=False):
         for name in files:
             os.remove(os.path.join(root, name))
@@ -59,7 +59,7 @@ def train(train_iter, test_iter, net, loss_func, device, write, num_epoch=10, lr
 
 
 if __name__ == "__main__":
-    people_num, data_per_people = 420, 150
+    people_num, data_per_people = 5, 10
     noise, mel = False, True
     margin, scale, easy_margin = 0.2, 20, False
     not_grad, bidirectional, reverse = False, True, False
@@ -74,9 +74,9 @@ if __name__ == "__main__":
 
     Device = d2l.try_gpu()
     if Device.type == 'cpu':
-        prefetch_factor, batch_size, num_works, persistent = 2, 8, 8, False
+        prefetch_factor, batch_size, num_works, persistent = 2, 4, 8, False
     elif torch.cuda.is_available():
-        prefetch_factor, batch_size, num_works, persistent = 8, 256, 32, True
+        prefetch_factor, batch_size, num_works, persistent = 8, 4, 32, True
     else:
         prefetch_factor, batch_size, num_works, persistent = 2, 32, 8, False
 

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 path = '.\\voices'
 name = 'a001.wav'
-audio_filename = ".\\data\\test\\G2231\\T0055G2231S0076.wav"
+audio_filename = "data/train/AGENT1/ECHVP10-20221118092424410-484_trimmed_split_agent.wav_chunk1.wav"
 
 
 def noise_augmentation(samples, min_db=40, max_db=80):

@@ -6,7 +6,7 @@ from tools import eval_net
 from models.tdnn_pretrain import Pretrain_TDNN
 
 if __name__ == "__main__":
-    model_path = './param.model'
+    model_path = 'net.model'
     Device = d2l.try_gpu()
 
     model2 = Pretrain_TDNN(420, 1024, False, not_grad=False)

@@ -7,9 +7,9 @@ from joblib import Parallel, delayed
 from torch.utils.data import Dataset, DataLoader
 
 transcript_filename = ".\\data\\transcript.txt"
-test_path = ".\\data\\test"
-train_path = ".\\data\\train"
-dev_path = ".\\data\\dev"
+test_path = "data/test"
+train_path = "data/train"
+dev_path = "data/dev"
 
 
 class MyDataset(Dataset):
@@ -47,14 +47,14 @@ class MyDataset(Dataset):
 
 
 def load_files(mode="train", folder_num=-1, file_num=-1, k=1.5):
-    path = ".\\data"
+    path = "./data"
     train, test = {}, {}
     if mode == "train":
-        path = path + '\\train'
+        path = os.path.join(path, "train")
     elif mode == "test":
-        path = path + '\\test'
+        path = os.path.join(path, "test")
     elif mode == "dev":
-        path = path + "\\dev"
+        path = os.path.join(path, "dev")
     else:
         raise Exception(f'Error: mode {mode} 不存在')
     dirs = os.listdir(path)
@@ -86,6 +86,7 @@ def load_files(mode="train", folder_num=-1, file_num=-1, k=1.5):
             file_num = 10
         np.random.shuffle(sub_files)
         train_num = int(file_num // (k + 1) * k + 1)
+        print(train_num)
         # test_num = file_num - train_num
 
         for j in range(train_num):
