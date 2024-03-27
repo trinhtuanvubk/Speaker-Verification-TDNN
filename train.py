@@ -60,8 +60,10 @@ def train(train_iter, test_iter, net, loss_func, device, write, num_epoch=10, lr
 
 if __name__ == "__main__":
     people_num, data_per_people = 5, 10
+    margin, scale, easy_margin = 0.5, 6, False
     noise, mel = False, True
-    margin, scale, easy_margin = 0.2, 20, False
+    # people_num, data_per_people = 420, 150
+    # margin, scale, easy_margin = 0.2, 20, False
     not_grad, bidirectional, reverse = False, True, False
     num_epochs, learn_rate, weight_decay = 150, 0.125, 1e-3
     mode, model_name = "train", "dense169"

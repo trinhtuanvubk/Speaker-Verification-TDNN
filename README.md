@@ -1,7 +1,7 @@
-# 声纹识别
+# Introduction
+https://github.com/konas122/Voiceprint-Recognition
 
-![GitHub last commit](https://img.shields.io/github/last-commit/konas122/Voiceprint-recognition)
-![GitHub license](https://img.shields.io/github/license/konas122/Voiceprint-recognition?style=flat-square)
+
 
 ## requirements
 
