@@ -37,7 +37,7 @@ def evaluate_accuracy_gpu(net, data_iter, device=None):
             size = lambda x, *args, **kwargs: x.numel(*args, **kwargs)
             phi = net(X)
 
-            one_hot = torch.zeros(phi.size(), device='cuda' if torch.cuda.is_available() else 'cpu')
+            one_hot = torch.zeros(phi.size(), device='cuda:1' if torch.cuda.is_available() else 'cpu')
             one_hot.scatter_(1, y.view(-1, 1), 1)
             output = (one_hot * phi) + ((1.0 - one_hot) * phi)
             prec = prec_accuracy(output.detach(), y.detach(), topk=(1,))[0]
@@ -80,7 +80,7 @@ class AAMSoftmax(nn.Module):
             phi = torch.where((cosine - self.th) > 0, phi, cosine - self.mm)
 
         # one_hot = torch.zeros_like(cosine)
-        one_hot = torch.zeros(cosine.size(), device='cuda' if torch.cuda.is_available() else 'cpu')
+        one_hot = torch.zeros(cosine.size(), device='cuda:1' if torch.cuda.is_available() else 'cpu')
         one_hot.scatter_(1, label.view(-1, 1), 1)
         output = (one_hot * phi) + ((1.0 - one_hot) * cosine)
         output = output * self.s

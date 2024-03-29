@@ -48,7 +48,7 @@ def train(train_iter, test_iter, net, loss_func, device, write, num_epoch=10, lr
             scheduler.step()
         sum += metric[2]
         # test_acc = 0
-        test_acc = evaluate_accuracy_gpu(net, test_iter)
+        test_acc = evaluate_accuracy_gpu(net, test_iter, device)
         print(f'\tloss {train_l:.3f}, train acc {train_acc:.3f}, '
               f'test acc {test_acc:.3f}')
         write.add_scalar('loss', train_l, epoch)
@@ -75,6 +75,8 @@ if __name__ == "__main__":
     # prefetch_factor, batch_size, num_works, persistent = 2, 32, 8, False
 
     Device = d2l.try_gpu()
+    # print(Device)
+    Device = torch.device("cuda:1")
     if Device.type == 'cpu':
         prefetch_factor, batch_size, num_works, persistent = 2, 4, 8, False
     elif torch.cuda.is_available():
