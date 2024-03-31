@@ -48,8 +48,8 @@ def load_files(mode="train", folder_num=-1, file_num=-1, k=1.5, data_path="./dat
         path = os.path.join(path, "train")
     elif mode == "test":
         path = os.path.join(path, "test")
-    elif mode == "dev":
-        path = os.path.join(path, "dev")
+    elif mode == "val":
+        path = os.path.join(path, "val")
     else:
         raise Exception(f'Error: mode {mode} is exist')
     dirs = os.listdir(path)
