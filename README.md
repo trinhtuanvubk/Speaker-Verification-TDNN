@@ -30,7 +30,7 @@ NOTE: The original repo has something wrong when splitting data, you should put 
 
 - To finetune, run:
 ```bash
-python3 main.py --scenario finetune
+python3 main.py --scenario train --load_pretrained
 ```
 
 - To train, run:

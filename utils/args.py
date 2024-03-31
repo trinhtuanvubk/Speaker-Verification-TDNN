@@ -8,9 +8,10 @@ def get_args():
     parser.add_argument('--seed', type=int, default=1234)
     # parser.add_argument('--scenario', type=str, default='test_output_model')
     parser.add_argument('--scenario', type=str, default='train')
+    parser.add_argument('--load_pretrained', action="store_true")
 
-    parser.add_argument('--model', type=str, default='SVTR')
-    parser.add_argument('--pretrain_dir', type=str, default='SVTR_pretrained_large_2810')
+    # parser.add_argument('--model', type=str, default='SVTR')
+    parser.add_argument('--pretrained_path', type=str, default='ckpts/param.model')
     parser.add_argument('--ckpt_dir', type=str, default='ckpts')
 
 

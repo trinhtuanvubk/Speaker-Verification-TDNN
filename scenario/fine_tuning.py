@@ -7,7 +7,7 @@ from nnet.loss.loss import AAMSoftmax
 # from d2l import torch as d2l
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
-from models.tdnn_pretrain import Pretrain_TDNN
+from nnet.tdnn.tdnn_pretrain import Pretrain_TDNN
 
 
 def load_model(path, output_num, device, not_grad=False):
@@ -17,6 +17,9 @@ def load_model(path, output_num, device, not_grad=False):
     del load_net
     return model
 
+
+def finetune(args):
+    pass
 
 if __name__ == "__main__":
     people_num, data_per_people = 420, 10

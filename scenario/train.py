@@ -7,15 +7,23 @@ import scenario.module as module
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
 from nnet.tdnn.tdnn import ECAPA_TDNN
+from nnet.tdnn.tdnn_pretrain import Pretrain_TDNN
 from nnet.loss.loss import AAMSoftmax, evaluate_accuracy_gpu
 
 class Trainer:
-
     def __init__(self, args):
         self.args = args
         self.train_loader, self.val_loader = loader.get_loader(args)
         self.writer = SummaryWriter(args.logs_path)
-        model = ECAPA_TDNN(in_channels=80, 
+        if args.load_pretrained:
+            print("finetune+==================")
+            model = Pretrain_TDNN(args.people_num,
+                                  1024, 
+                                  output_embedding=False, 
+                                  not_grad=False)
+            model.load_parameters(args.pretrained_path, args.device)
+        else:
+            model = ECAPA_TDNN(in_channels=80, 
                                 channels=512, 
                                 embd_dim=192,
                                 output_num=args.people_num, 
