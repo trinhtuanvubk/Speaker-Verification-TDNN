@@ -93,7 +93,7 @@ class Trainer:
         
 
         os.makedirs(self.args.ckpt_dir, exist_ok=True)
-        torch.save(self.model.state_dict(), f"{self.args.ckpt_dir}/model.ckpt")
+        torch.save(self.model.state_dict(), f"{self.args.ckpt_dir}/{self.args.ckpt_name}")
         # write.add_graph(net, img)
 
 def train(args):
