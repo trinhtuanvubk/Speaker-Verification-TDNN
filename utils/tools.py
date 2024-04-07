@@ -10,9 +10,9 @@ import matplotlib.pyplot as plt
 
 
 def tuneThresholdfromScore(scores, labels, target_fa):
-    # 运用scikit-learn库来计算roc曲线
+
     fpr, tpr, thresholds = metrics.roc_curve(labels, scores, pos_label=1)
-    # 算出auc
+    # auc
     auc = metrics.auc(fpr, tpr)
 
     plt.plot(fpr, tpr, 'k--', label='ROC (area = {0:.2f})'.format(auc), lw=2)
@@ -21,11 +21,11 @@ def tuneThresholdfromScore(scores, labels, target_fa):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('ROC Curve')
-    plt.savefig('./img/ROC.jpg', dpi=400)
+    plt.savefig('./figures/ROC.jpg', dpi=400)
 
     prec, recall, _ = metrics.precision_recall_curve(labels, scores, pos_label=1)
     metrics.PrecisionRecallDisplay(precision=prec, recall=recall).plot()
-    plt.savefig('./img/PR.jpg', dpi=400)
+    plt.savefig('./figures/PR.jpg', dpi=400)
 
     fnr = 1 - tpr
     tunedThreshold = []
@@ -33,7 +33,7 @@ def tuneThresholdfromScore(scores, labels, target_fa):
     for tfa in target_fa:
         idx = numpy.nanargmin(numpy.absolute((tfa - fpr)))  # numpy.where(fpr<=tfa)[0][-1]
         tunedThreshold.append([thresholds[idx], fpr[idx], fnr[idx]])
-    # 根据上面算出的fnr和fpr相减得出一个数组，算出数组中最小的索引(排除NaN)
+
     idxE = numpy.nanargmin(numpy.absolute((fnr - fpr)))
     eer = max(fpr[idxE], fnr[idxE])
 
@@ -55,7 +55,7 @@ def ComputeErrorRates(scores, labels, threshold=0.96695, p=0.01):
 
     metrics.ConfusionMatrixDisplay(confusion_matrix=matrix,
                                    display_labels=['Positive', 'Negative']).plot()
-    plt.savefig('./img/confusion_matrix.jpg', dpi=400)
+    plt.savefig('./figures/confusion_matrix.jpg', dpi=400)
 
     FAR = FP / (FP + TN)
     FRR = FN / (TP + FN)

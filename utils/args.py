@@ -13,6 +13,11 @@ def get_args():
     # parser.add_argument('--model', type=str, default='SVTR')
     parser.add_argument('--pretrained_path', type=str, default='ckpts/param.model')
     parser.add_argument('--ckpt_dir', type=str, default='ckpts')
+    parser.add_argument('--ckpt_name', type=str, default="model.ckpt")
+
+
+    parser.add_argument("--filetest_1", type=str, default="/home/sangdt/research/voice/Speaker-Verification-TDNN/data/test/AGENT1/ECHVP10-20221118092424410-484_trimmed_split_agent.wav_chunk1.wav")
+    parser.add_argument("--filetest_2", type=str, default="/home/sangdt/research/voice/Speaker-Verification-TDNN/data/test/AGENT1/ECHVP12-20221111153552345-828_trimmed_split_agent.wav_chunk0.wav")
 
 
     parser.add_argument('--mode', type=str, default='train', help="")

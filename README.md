@@ -38,6 +38,17 @@ python3 main.py --scenario train --load_pretrained
 python3 main.py --scenario train
 ```
 
+- To test with your dataset, run:
+```bash
+python3 main.py --scenario test_folder
+```
+
+- To test cosin similarity of two files (you should define your threshold for how similar of two files is considered spoken by the same person. I usually recommend in range 0.75 - 0.9):
+```bash
+python3 main.py --scenario test_two_files \
+--filetest_1 path/to/file_1 \
+--filetest_2 path/to/file_2 \
+```
 
 ## Reference
 
