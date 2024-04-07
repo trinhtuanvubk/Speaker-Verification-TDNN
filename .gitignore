@@ -3,6 +3,7 @@
 *.model
 logs
 ckpts
+scenario/fine_tuning.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
